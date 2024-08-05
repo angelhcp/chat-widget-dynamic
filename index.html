@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Chat Snippet</title>
-<script id="housecall-pro-chat-bubble" src="https://chat.housecallpro-staging.com/proChat.js" type="text/javascript" data-color="#2378cf" data-organization="5f55b9d0-451e-4f15-b383-764f646f8153" defer></script>
-  <!--<script id="housecall-pro-chat-bubble" src="https://chat.housecallpro-preprod.com/proChat.js" type="text/javascript" data-color="#0E6FBE" data-organization="8bf3a192-0b7e-4905-aae0-fe767a782953" defer></script>-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Chat Snippet</title>
+    <!-- <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro-staging.com/proChat.js" type="text/javascript" data-color="#2378cf" data-organization="5f55b9d0-451e-4f15-b383-764f646f8153" defer></script>
+  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro-preprod.com/proChat.js" type="text/javascript" data-color="#0E6FBE" data-organization="8bf3a192-0b7e-4905-aae0-fe767a782953" defer></script> -->
+    <script>
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+      const dataOrganization = getQueryParam("org");
 
+      if (dataOrganization) {
+        const script = document.createElement("script");
 
+        script.src = "https://chat.housecallpro-staging.com/proChat.js";
+        script.type = "text/javascript";
+        script.id = "housecall-pro-chat-bubble";
+        script.defer = true;
 
-<script>
-  const delay = (delayInms) => {
-  return new Promise(resolve => setTimeout(resolve, delayInms));
-}
+        script.setAttribute("data-organization", dataOrganization);
+        script.setAttribute("data-color", "#2378cf");
 
-const sample = async () => {
-  console.log('waiting...')
-  let delayres = await delay(3000);
-  console.log('finish');
-}
-sample();  
-  </script>
-  
-  
-  <script>
-sample();  
-  </script>
-</head>
-<body>
-  <h1>Test Chat for shared devs/staging account</h1>
-
-     
-
-</body>
+        document.head.appendChild(script);
+      } else {
+        console.error("data-organization query parameter not found");
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Test Chat for shared devs/staging account</h1>
+  </body>
 </html>
