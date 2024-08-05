@@ -13,6 +13,7 @@
         return urlParams.get(param);
       }
       const dataOrganization = getQueryParam("org");
+      const dataColor = getQueryParam("color");
 
       if (dataOrganization) {
         const script = document.createElement("script");
@@ -23,7 +24,7 @@
         script.defer = true;
 
         script.setAttribute("data-organization", dataOrganization);
-        script.setAttribute("data-color", "#2378cf");
+        if (dataColor) script.setAttribute("data-color", dataColor);
 
         document.head.appendChild(script);
       } else {
